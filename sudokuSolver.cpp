@@ -3,7 +3,6 @@ using namespace std;
 
 const int SIZE = 9;
 
-// Function to print the Sudoku grid
 void printGrid(int grid[SIZE][SIZE]) {
     for (int row = 0; row < SIZE; row++) {
         for (int col = 0; col < SIZE; col++) {
@@ -13,7 +12,6 @@ void printGrid(int grid[SIZE][SIZE]) {
     }
 }
 
-// Function to check if a number is already present in a row
 bool isNumberInRow(int grid[SIZE][SIZE], int row, int num) {
     for (int col = 0; col < SIZE; col++) {
         if (grid[row][col] == num) {
@@ -23,7 +21,6 @@ bool isNumberInRow(int grid[SIZE][SIZE], int row, int num) {
     return false;
 }
 
-// Function to check if a number is already present in a column
 bool isNumberInColumn(int grid[SIZE][SIZE], int col, int num) {
     for (int row = 0; row < SIZE; row++) {
         if (grid[row][col] == num) {
@@ -33,7 +30,6 @@ bool isNumberInColumn(int grid[SIZE][SIZE], int col, int num) {
     return false;
 }
 
-// Function to check if a number is already present in a 3x3 box
 bool isNumberInBox(int grid[SIZE][SIZE], int boxStartRow, int boxStartCol, int num) {
     for (int row = 0; row < 3; row++) {
         for (int col = 0; col < 3; col++) {
@@ -45,14 +41,12 @@ bool isNumberInBox(int grid[SIZE][SIZE], int boxStartRow, int boxStartCol, int n
     return false;
 }
 
-// Function to check if it's safe to place a number in a given cell
 bool isSafe(int grid[SIZE][SIZE], int row, int col, int num) {
     return !isNumberInRow(grid, row, num) &&
            !isNumberInColumn(grid, col, num) &&
            !isNumberInBox(grid, row - row % 3, col - col % 3, num);
 }
 
-// Function to find the next empty cell in the grid
 bool findEmptyCell(int grid[SIZE][SIZE], int& row, int& col) {
     for (row = 0; row < SIZE; row++) {
         for (col = 0; col < SIZE; col++) {
@@ -64,7 +58,6 @@ bool findEmptyCell(int grid[SIZE][SIZE], int& row, int& col) {
     return false;
 }
 
-// Function to solve the Sudoku puzzle using backtracking
 bool solveSudoku(int grid[SIZE][SIZE]) {
     int row, col;
 
@@ -80,11 +73,11 @@ bool solveSudoku(int grid[SIZE][SIZE]) {
                 return true; // Solution found
             }
 
-            grid[row][col] = 0; // Backtrack and try a different number
+            grid[row][col] = 0; 
         }
     }
 
-    return false; // No solution found
+    return false;
 }
 
 int main() {
